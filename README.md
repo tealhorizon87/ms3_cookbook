@@ -48,7 +48,7 @@ As the application owner, I want -
 ### Design
 
 This application is web-based, utilising several HTML templates to create, display, edit and delete recipes from the database. The home screen is useable by everyone, but certain functions such as adding new recipes and commenting on other users' recipes are restricted to registered users.
-The recipes themselves are displayed such that information about the recipe is at the top, followed by ingredients and equipment, then cooking instructions. A comments box is below each recipe (for registered users) to allow users to interact with the recipe owner.
+The recipes themselves are displayed such that information about the recipe is at the top, followed by ingredients and equipment, then cooking instructions. A comments box is below each recipe (for registered users) to allow users to interact with the recipe author.
 
 The font families used for the application are [font name] for all headings, [font name] for main body text, and [font name] for decorative text. All fonts have been sourced from [Google Fonts](https://fonts.google.com/).
 
@@ -60,7 +60,15 @@ The colour scheme for the site has been taken from several of the photos used as
 Back to [Table of Contents](#table-of-contents)
 
 ## Features
+- A navbar - contiguous on all pages - that allows the user to access the areas of the application that they are authorised to access
+- A search bar on the home page to allow users to search for recipes by keyword, name, category, or ingredients
+- Login and registration pages to allow new users to register, and existing users to login
+- A simple entry form to allow users to add new recipes to the database
+- Edit and delete buttons on owned recipes to allow the owner to adjust or remove their own content
+- A comment box below the recipe to allow users to interact with the community and author
+
 ### Future Features
+- Add a 'stats' section to the recipe header to allow people to see how many times a recipe has been used
 
 ## Technologies Used
 
