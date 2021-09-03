@@ -46,7 +46,6 @@ As the application owner, I want -
   - to have the opportunity to promote cookware or other applications relevant to the section the user is viewing
 
 ### Design
-
 This application is web-based, utilising several HTML templates to create, display, edit and delete recipes from the database. The home screen is useable by everyone, but certain functions such as adding new recipes and commenting on other users' recipes are restricted to registered users.
 The recipes themselves are displayed such that information about the recipe is at the top, followed by ingredients and equipment, then cooking instructions. A comments box is below each recipe (for registered users) to allow users to interact with the recipe author.
 
@@ -56,6 +55,19 @@ The colour scheme for the site has been taken from several of the photos used as
 ![colour palette image](static/img/colour-palette.png)
 
 ### Wireframes
+Below are the wireframes used to design the layout. They were created using [Balsamiq](https://balsamiq.com/)
+#### Home
+![wireframe for home page](static/img/home.png)
+#### Log in screen
+![wireframe for login screen](static/img/log-in.png)
+#### Register screen
+![wireframe for register screen](static/img/register.png)
+#### Profile
+![wireframe for profile page](static/img/profile.png)
+#### Add Recipe
+![wireframe for add recipe page](static/img/add-recipe1.png)
+#### Recipe
+![wireframe for recipe display](static/img/recipe.png)
 
 Back to [Table of Contents](#table-of-contents)
 
