@@ -83,6 +83,41 @@ Back to [Table of Contents](#table-of-contents)
 - Add a 'stats' section to the recipe header to allow people to see how many times a recipe has been used
 
 ## Technologies Used
+### Languages:
+  - [HTML5](https://en.wikipedia.org/wiki/HTML5)
+    - This is the main mark-up language for the project
+  - [CSS3](https://en.wikipedia.org/wiki/CSS)
+    - Used for personalised styling over and above the Materialize styles
+  - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+    - Used to animate and control aspects of the pages that move
+  - [Python](https://www.python.org/)
+    - Used to connect the frontend application to the backend database, and to control the navigation and publication of the application
+  - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
+    - A templating language/engine used to simplify the page layouts and insert data from the database
+
+### Libraries and Frameworks:
+  - [Google Fonts](https://fonts.google.com/)
+    - Used as the source for the font databases used in this site
+  - [Font Awesome 5.15.3](https://fontawesome.com/)
+    - Used as the source for the icons used
+  - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+    - A microframework used to provide the tools and libraries used to create the application
+  - [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
+    - A web-app library used to add security to user passwords
+
+### Tools:
+  - [Atom](https://atom.io/) with [GitHub Desktop](https://desktop.github.com/)
+    - Atom is my preferred text editor, linked with GitHub Desktop in order to push the code to GitHub
+  - [Git](https://git-scm.com/)
+    - Used for version control
+  - [GitHub](https://github.com/)
+    - Used to store the project files
+  - [Balsamiq](https://balsamiq.com/)
+    - A wireframe program used to create the mock-ups
+  - [Coolors](https://coolors.co/)
+    - An online tool to create colour palettes
+
+Back to [Table of Contents](#table-of-contents)
 
 ## Testing
 
