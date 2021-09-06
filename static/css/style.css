@@ -1,0 +1,25 @@
+:root {
+  --my-red: #de5454;
+  --my-green: #006600;
+  --my_orange: #ff9747;
+  --my-grey: #474747;
+  --my-white: #fafafa;
+}
+
+body {
+  font-family: "Glory", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+nav {
+  background-color: var(--my-red);
+  color: var(--my-white);
+}
