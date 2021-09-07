@@ -1,11 +1,13 @@
+/* ---------------------------------------Custom colours */
 :root {
   --my-red: #de5454;
   --my-green: #006600;
-  --my_orange: #ff9747;
+  --my-orange: #ff9747;
   --my-grey: #474747;
   --my-white: #fafafa;
 }
 
+/* ------------------------------------------------Fonts */
 body {
   font-family: "Glory", sans-serif;
 }
@@ -20,9 +22,17 @@ header a {
   font-family: "Josefin Sans", sans-serif;
 }
 
+/* -----------------------------------------------Header */
 nav {
-  background-color: var(--my-red);
-  color: var(--my-white);
+  background-color: var(--my-orange);
+  height: 56px;
+  overflow: hidden;
+  position: fixed;
+}
+
+nav a,
+nav li a {
+  color: var(--my-grey);
 }
 
 .my-logo {
@@ -31,4 +41,19 @@ nav {
   font-size: 2.5rem;
   padding-left: 1rem;
   font-weight: 600;
+}
+
+/* -------------------------------------------------home */
+.hero-image-box {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+}
+
+.card-panel {
+  background-color: var(--my-grey);
+  color: var(--my-white);
 }
