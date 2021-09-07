@@ -45,12 +45,9 @@ nav li a {
 
 /* -------------------------------------------------home */
 .hero-image-box {
-  max-height: 500px;
-  overflow: hidden;
-}
-
-.hero-image {
-  width: 100%;
+  background: url("./../img/hero1.jpg") no-repeat center;
+  background-size: cover;
+  height: 500px;
 }
 
 .card-panel {
