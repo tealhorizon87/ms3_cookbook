@@ -26,13 +26,11 @@
     <div class="card-panel hoverable">
       <div class="card-content">
         <span class="card-title">Recipe Title</span>
-        <p>
-          Recipe Description. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <ul>
+          {% for category in categories %}
+            <li>{{ category.category_name }}</li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
