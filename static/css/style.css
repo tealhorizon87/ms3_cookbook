@@ -10,6 +10,7 @@
 /* ------------------------------------------------Fonts */
 body {
   font-family: "Glory", sans-serif;
+  color: var(--my-grey);
 }
 
 h1,
@@ -20,6 +21,7 @@ h5,
 h6,
 header a {
   font-family: "Josefin Sans", sans-serif;
+  color: var(--my-grey);
 }
 
 /* -----------------------------------------------Header */
@@ -53,4 +55,39 @@ nav li a {
 .card-panel {
   background-color: var(--my-grey);
   color: var(--my-white);
+}
+
+/* -----------------------------------------------modals */
+/* focus colours */
+.input-field input:not(.browser-default):focus:not([readonly]) + label {
+  color: var(--my-grey);
+}
+
+.input-field input:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid var(--my-grey);
+  box-shadow: 0 1px 0 0 var(--my-grey);
+}
+
+.input-field .prefix.active {
+  color: var(--my-grey);
+}
+
+/* validation colours */
+.input-field input.valid {
+  border-bottom: 1px solid green;
+  box-shadow: 0 1px 0 0 green;
+}
+
+.input-field input.invalid {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
+}
+
+.btn {
+  background-color: var(--my-grey);
+  color: var(--my-white);
+}
+
+.btn:hover {
+  background-color: var(--my-green);
 }
