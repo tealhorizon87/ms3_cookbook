@@ -7,11 +7,24 @@
   --my-white: #fafafa;
 }
 
+body::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.25);
+  z-index: -1;
+}
 /* ------------------------------------------------Fonts */
 body {
   font-family: "Glory", sans-serif;
   color: var(--my-grey);
   padding-top: 56px;
+  position: relative;
+  height: 100vh;
+  width: 100%;
 }
 
 h1,
