@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block styles %}
+  <style>
+    body {
+      background: url("{{ url_for('static', filename='img/hero6.jpg') }}") no-repeat center fixed;
+      background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="row login-card">
+    <div class="card-panel col s10 m8 offset-s1 offset-m2">
+      <h2 class="center-align">Register</h2>
+      <div class="row">
+        <form class="col s10 m8 offset-m2" action="#" method="POST">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="fas fa-user-plus prefix"></i>
+              <input id="username" name="username" type="text" class="validate">
+              <label for="username">Username</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="fas fa-user-lock prefix"></i>
+              <input id="password" name="password" type="text" class="validate">
+              <label for="password">Password</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="fas fa-user-lock prefix"></i>
+              <input id="password-confirm" name="password-confirm" type="text" class="validate">
+              <label for="password-confirm">Confirm Password</label>
+            </div>
+            <button type="submit" name="button" class="btn col s4 offset-s4">Log in</button>
+          </div>
+        </form>
+      </div>
+      <p class="center-align">
+        Already a member?
+        <a href="{{ url_for('login') }}" class="modal-trigger"><strong>Log in here</strong></a>
+      </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

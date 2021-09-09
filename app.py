@@ -17,10 +17,21 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 @app.route("/")
 def home():
     categories = list(mongo.db.categories.find())
     return render_template("home.html", categories = categories)
+
+
+@app.route("/login", methods = ["GET", "POST"])
+def login():
+    return render_template("login.html")
+
+
+@app.route("/register", methods = ["GET", "POST"])
+def register():
+    return render_template("register.html")
 
 
 if __name__ == "__main__":

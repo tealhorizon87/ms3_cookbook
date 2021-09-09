@@ -11,6 +11,7 @@
 body {
   font-family: "Glory", sans-serif;
   color: var(--my-grey);
+  padding-top: 56px;
 }
 
 h1,
@@ -30,6 +31,8 @@ nav {
   height: 56px;
   overflow: hidden;
   position: fixed;
+  top: 0;
+  left: 0;
 }
 
 nav a,
@@ -53,11 +56,20 @@ nav li a {
 }
 
 .card-panel {
-  background-color: var(--my-grey);
-  color: var(--my-white);
+  background-color: var(--my-white);
+  color: var(--my-grey);
 }
 
-/* -----------------------------------------------modals */
+.browse-panel {
+  margin-top: 500px;
+}
+
+/* ------------------------------------------------login */
+.login-card {
+  margin-top: 4rem;
+}
+
+/* ------------------------------------------------forms */
 /* focus colours */
 .input-field input:not(.browser-default):focus:not([readonly]) + label {
   color: var(--my-grey);
