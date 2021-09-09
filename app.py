@@ -24,14 +24,37 @@ def home():
     return render_template("home.html", categories = categories)
 
 
+@app.route("/register", methods = ["GET", "POST"])
+def register():
+    if request.method == "POST":
+        # check if user already exsists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        # check if password matched the confirm password entry
+        password = request.form.get("password")
+        confirm_password = request.form.get("password-confirm")
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+        elif password != confirm_password:
+            flash("Your password and confirmation do not match")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        # enter the new user to the users collection
+        mongo.db.users.insert_one(register)
+        flash("Registration Successful")
+
+    return render_template("register.html")
+
+
 @app.route("/login", methods = ["GET", "POST"])
 def login():
     return render_template("login.html")
-
-
-@app.route("/register", methods = ["GET", "POST"])
-def register():
-    return render_template("register.html")
 
 
 if __name__ == "__main__":
