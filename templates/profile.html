@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block styles %}
+  <style>
+    body {
+      background: url("{{ url_for('static', filename='img/hero1.jpg') }}") no-repeat center fixed;
+      background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col s10 m8 offset-s1 offset-m2 card-panel">
+      <h2 class="center-align">
+        {{ username }}'s Profile
+      </h2>
+    </div>
+  </div>
+{% endblock %}
