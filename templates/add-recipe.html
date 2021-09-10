@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block styles %}
+  <style>
+    body {
+      background: url("{{ url_for('static', filename='img/hero3.jpg') }}") no-repeat center fixed;
+      background-size: cover;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <div class="row my-card">
+    <div class="card-panel col s10 m8 offset-s1 offset-m2">
+      <h2 class="center-align">Add a Recipe</h2>
+      <form class="col s12 m10 offset-m1" action="{{ url_for('add_recipe') }}" method="POST">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="title" name="title" type="text"  minlength="5"
+              maxlength="15" pattern="[a-zA-Z ]{5,15}$" class="validate" required>
+            <label for="title">Recipe Title</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <select id="category_name" name="category_name" class="validate" multiple required>
+              {% for category in categories %}
+                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+              {% endfor %}
+            </select>
+            <label for="category_name">Choose relevant categories</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="description" class="materialize-textarea validate" name="description"
+              pattern="[a-zA-Z ]{5,150}$" minlength="5" maxlength="150" required></textarea>
+            <label for="description">Description</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <select id="difficulty" name="difficulty" class="validate" required>
+              <option value="" disabled selected></option>
+              <option value="easy">Easy</option>
+              <option value="moderate">Moderate</option>
+              <option value="hard">Hard</option>
+            </select>
+            <label for="difficulty">Difficulty</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <p>Servings</p>
+            <input type="number" id="servings" name="servings" class="validate" min="1" max="12" required>
+          </div>
+          <div class="input-field col s4">
+            <p>Prep time (mins)</p>
+            <input type="number" id="prep-time" name="prep-time" class="validate" min="5" max="90" step="5" required>
+          </div>
+          <div class="input-field col s4">
+            <p>Cook time (mins)</p>
+            <input type="number" id="cook-time" name="cook-time" class="validate" min="5" max="300" step="5" required>
+          </div>
+        </div>
+        <div class="row">
+          <h4>Dietary Requirements</h4>
+          <div class="input-field col s12">
+            <select id="diet" name="diet" class="validate" multiple required>
+              {% for type in diet %}
+                <option value="{{ type.diet_name }}">{{ type.diet_name }}</option>
+              {% endfor %}
+            </select>
+            <label for="diet">Diet type</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="allergens" class="materialize-textarea validate" name="allergens"
+              pattern="[a-zA-Z]{5,150}$" minlength="5" maxlength="150" required></textarea>
+            <label for="allergens">Allergens - seperated with a "/" (nuts/shellfish - etc)</label>
+          </div>
+        </div>
+        <div class="row">
+          <h4>Ingredients</h4>
+          <p>Add each ingredient quantity then name, and seperate each one with a "/" (350g flour/200g sugar - etc)</p>
+          <div class="input-field col s12">
+            <textarea id="ingredients" class="materialize-textarea validate" name="ingredients"
+              pattern="[a-zA-Z ]{5,300}$" minlength="5" maxlength="300" required></textarea>
+              <label for="ingredients">Ingredients</label>
+          </div>
+        </div>
+        <div class="row">
+          <h4>Ingredients</h4>
+          <p>Add each step and seperate them with a "/" (chop something/cook something - etc)</p>
+          <div class="input-field col s12">
+            <textarea id="steps" class="materialize-textarea validate" name="steps"
+              pattern="[a-zA-Z ]{5,500}$" minlength="5" maxlength="500"required></textarea>
+              <label for="steps">Steps</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

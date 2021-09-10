@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var menu = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(menu, {edge: 'right'});
+  let sidenavs = document.querySelectorAll(".sidenav");
+  let sidenavsInstance = M.Sidenav.init(sidenavs, {edge: "right"});
+  let selects = document.querySelectorAll("select");
+  let selectsInstance = M.FormSelect.init(selects);
 });

@@ -9,7 +9,7 @@
 
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0px;
   right: 0px;
   bottom: 0px;
@@ -22,7 +22,6 @@ body {
   font-family: "Glory", sans-serif;
   color: var(--my-grey);
   padding-top: 56px;
-  position: relative;
   height: 100vh;
   width: 100%;
 }
@@ -46,6 +45,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: +2;
 }
 
 nav a,
@@ -104,34 +104,25 @@ nav li a {
 }
 
 /* ------------------------------------------------login */
-.login-card {
+.my-card {
   margin-top: 4rem;
 }
 
 /* ------------------------------------------------forms */
 /* focus colours */
-.input-field input:not(.browser-default):focus:not([readonly]) + label {
+.input-field input:not(.browser-default):focus:not([readonly]) + label,
+.input-field textarea.materialize-textarea:focus:not([readonly]) + label {
   color: var(--my-grey);
 }
 
-.input-field input:not(.browser-default):focus:not([readonly]) {
+.input-field input:not(.browser-default):focus:not([readonly]),
+.input-field textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid var(--my-grey);
   box-shadow: 0 1px 0 0 var(--my-grey);
 }
 
 .input-field .prefix.active {
   color: var(--my-grey);
-}
-
-/* validation colours */
-.input-field input.valid {
-  border-bottom: 1px solid green;
-  box-shadow: 0 1px 0 0 green;
-}
-
-.input-field input.invalid {
-  border-bottom: 1px solid red;
-  box-shadow: 0 1px 0 0 red;
 }
 
 .btn {
@@ -141,4 +132,9 @@ nav li a {
 
 .btn:hover {
   background-color: var(--my-green);
+}
+
+[type="checkbox"]:checked + span:not(.lever):before {
+  border-right: 2px solid var(--my-green);
+  border-bottom: 2px solid var(--my-green);
 }

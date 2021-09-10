@@ -2,14 +2,14 @@
 {% block styles %}
   <style>
     body {
-      background: url("{{ url_for('static', filename='img/hero6.jpg') }}") no-repeat center fixed;
+      background: url("{{ url_for('static', filename='img/hero2.jpg') }}") no-repeat center fixed;
       background-size: cover;
     }
   </style>
 {% endblock %}
 
 {% block content %}
-  <div class="row login-card">
+  <div class="row my-card">
     <div class="card-panel col s10 m8 offset-s1 offset-m2">
       <h2 class="center-align">Log In</h2>
       <form class="col s10 m8 offset-m2" action="{{ url_for('login') }}" method="POST">
