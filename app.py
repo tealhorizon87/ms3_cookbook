@@ -66,6 +66,7 @@ def login():
             # check password is correct
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
+                    # Add user to session cookies
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome back, {}".format(
                         request.form.get("username")))
@@ -92,6 +93,14 @@ def profile(username):
         return render_template("profile.html", username = username)
 
     return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # remove user from session cookies
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":
