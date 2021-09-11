@@ -105,8 +105,29 @@ def logout():
 
 @app.route("/add_recipe", methods = ["GET", "POST"])
 def add_recipe():
+    if request.method == "POST":
+        is_private = "on" if request.form.get("is_private") else "off"
+        recipe = {
+            "recipe_title": request.form.get("title"),
+            "category_name": request.form.get("category_name"),
+            "recipe_description": request.form.get("description"),
+            "difficulty": request.form.get("difficulty"),
+            "is_private": is_private,
+            "servings": request.form.get("servings"),
+            "prep_time": request.form.get("prep-time"),
+            "cook_time": request.form.get("cook-time"),
+            "dietary_requirements": request.form.get("diet"),
+            "allergens": request.form.get("allergens").split("/"),
+            "ingredients": request.form.get("ingredients").split("/"),
+            "steps": request.form.get("steps").split("/")
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash("Recipe successfully uploaded!")
+        return redirect(url_for("home"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add-recipe.html", categories = categories)
+    diets = mongo.db.diet.find().sort("diet_name", 1)
+    return render_template("add-recipe.html", categories = categories, diets = diets)
 
 
 if __name__ == "__main__":

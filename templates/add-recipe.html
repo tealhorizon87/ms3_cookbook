@@ -12,6 +12,7 @@
     <div class="card-panel col s10 m8 offset-s1 offset-m2">
       <h2 class="center-align">Add a Recipe</h2>
       <form class="col s12 m10 offset-m1" action="{{ url_for('add_recipe') }}" method="POST">
+        <!-- recipe title -->
         <div class="row">
           <div class="input-field col s12">
             <input id="title" name="title" type="text"  minlength="5"
@@ -19,6 +20,7 @@
             <label for="title">Recipe Title</label>
           </div>
         </div>
+        <!-- category name -->
         <div class="row">
           <div class="input-field col s12">
             <select id="category_name" name="category_name" class="validate" multiple required>
@@ -29,6 +31,7 @@
             <label for="category_name">Choose relevant categories</label>
           </div>
         </div>
+        <!-- recipe description -->
         <div class="row">
           <div class="input-field col s12">
             <textarea id="description" class="materialize-textarea validate" name="description"
@@ -36,8 +39,9 @@
             <label for="description">Description</label>
           </div>
         </div>
+        <!-- Difficulty and privacy -->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s6">
             <select id="difficulty" name="difficulty" class="validate" required>
               <option value="" disabled selected></option>
               <option value="easy">Easy</option>
@@ -46,7 +50,16 @@
             </select>
             <label for="difficulty">Difficulty</label>
           </div>
+          <div class="switch col s6">
+            <p>Would you like to make this private?</p>
+            <label for="is_private">
+              <input type="checkbox" id="is_private" name="is_private">
+              <span class="lever"></span>
+              Private
+            </label>
+          </div>
         </div>
+        <!-- Serving size, prep and cook time -->
         <div class="row">
           <div class="input-field col s4">
             <p>Servings</p>
@@ -61,12 +74,13 @@
             <input type="number" id="cook-time" name="cook-time" class="validate" min="5" max="300" step="5" required>
           </div>
         </div>
+        <!-- Dietary requirements and allergens -->
         <div class="row">
           <h4>Dietary Requirements</h4>
           <div class="input-field col s12">
             <select id="diet" name="diet" class="validate" multiple required>
-              {% for type in diet %}
-                <option value="{{ type.diet_name }}">{{ type.diet_name }}</option>
+              {% for diet in diets %}
+                <option value="{{ diet.diet_name }}">{{ diet.diet_name }}</option>
               {% endfor %}
             </select>
             <label for="diet">Diet type</label>
@@ -79,8 +93,9 @@
             <label for="allergens">Allergens - seperated with a "/" (nuts/shellfish - etc)</label>
           </div>
         </div>
+        <!-- Ingredients -->
         <div class="row">
-          <h4>Ingredients</h4>
+          <h3>Ingredients</h3>
           <p>Add each ingredient quantity then name, and seperate each one with a "/" (350g flour/200g sugar - etc)</p>
           <div class="input-field col s12">
             <textarea id="ingredients" class="materialize-textarea validate" name="ingredients"
@@ -88,14 +103,18 @@
               <label for="ingredients">Ingredients</label>
           </div>
         </div>
+        <!-- Steps -->
         <div class="row">
-          <h4>Ingredients</h4>
+          <h3>Steps</h3>
           <p>Add each step and seperate them with a "/" (chop something/cook something - etc)</p>
           <div class="input-field col s12">
             <textarea id="steps" class="materialize-textarea validate" name="steps"
               pattern="[a-zA-Z ]{5,500}$" minlength="5" maxlength="500"required></textarea>
               <label for="steps">Steps</label>
           </div>
+        </div>
+        <div class="row">
+          <button type="submit" name="button" class="btn col s4 offset-s4">Upload</button>
         </div>
       </form>
     </div>

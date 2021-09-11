@@ -29,7 +29,7 @@
             {% if session.user %}
               <li><a href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
               <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-              <li><a href="{{ url_for('logout') }}">Log out</a></li>
+              <li><a href="#logoutModal" class="modal-trigger">Log out</a></li>
               {% if session.user|lower == "admin"|lower %}
                 <li><a href="#">Manage Categories</a></li>
               {% endif %}
@@ -46,7 +46,7 @@
         {% if session.user %}
           <li><a href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
           <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-          <li><a href="{{ url_for('logout') }}">Log out</a></li>
+          <li><a href="#logoutModal" class="modal-trigger">Log out</a></li>
           {% if session.user|lower == "admin"|lower %}
             <li><a href="#">Manage Categories</a></li>
           {% endif %}
@@ -63,7 +63,7 @@
         {% if messages %}
           {% for message in messages %}
             <div class="row">
-              <div  id="flashMessagaes" class="col s10 m8 offset-s1 offset-m2 flashes card-panel">
+              <div  id="flashMessages" class="col s10 m8 offset-s1 offset-m2 flashes card-panel">
                 <h3 class="center-align">{{ message }}</h3>
               </div>
             </div>
@@ -76,6 +76,18 @@
       {% block content %}
       {% endblock %}
     </main>
+
+    <section>
+      <div id="logoutModal" class="modal">
+        <div class="modal-content center-align">
+          <h3>Are you sure?</h3>
+        </div>
+        <div class="modal-footer center-align">
+          <a href="{{ url_for('logout') }}" class="modal-close btn">Log out</a>
+          <a href="{{ url_for('home') }}" class="modal-close btn">Cancel</a>
+        </div>
+      </div>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename = 'js/script.js') }}"></script>
