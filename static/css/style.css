@@ -77,6 +77,16 @@ nav li a {
   margin-top: 500px;
 }
 
+.tile-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tile {
+  width: 30%;
+}
+
 #flashMessages {
   -moz-animation: cssAnimation 0s ease-in 5s forwards;
   /* Firefox */

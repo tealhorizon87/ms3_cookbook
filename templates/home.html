@@ -12,12 +12,13 @@
   <section class="card-panel browse-panel">
     <h2 class="center-align">Browse Recipes</h2>
 
-    <div class="row">
+    <div class="row tile-grid">
       {% for recipe in recipes %}
-        <div class="card-panel hoverable">
+        <div class="card-panel hoverable tile">
           <div class="card-content">
-            <span class="card-title">{{ recipe.recipe_title }}</span>
+            <h4 class="card-title">{{ recipe.recipe_title }}</h4>
             <p>{{ recipe.recipe_description }}</p>
+            <p>Date uploaded (yy-mm-dd): {{ recipe.date_created }}</p>
           </div>
         </div>
       {% endfor %}

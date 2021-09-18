@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -119,7 +120,9 @@ def add_recipe():
             "dietary_requirements": request.form.get("diet"),
             "allergens": request.form.get("allergens").split("*"),
             "ingredients": request.form.get("ingredients").split("*"),
-            "steps": request.form.get("steps").split("*")
+            "steps": request.form.get("steps").split("*"),
+            "created_by": session["user"],
+            "date_created": datetime.now().strftime('%y-%m-%d')
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully uploaded!")
