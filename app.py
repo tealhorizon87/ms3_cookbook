@@ -20,8 +20,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    categories = list(mongo.db.categories.find())
-    return render_template("home.html", categories = categories)
+    recipes = list(mongo.db.recipes.find())
+    return render_template("home.html", recipes = recipes)
 
 
 @app.route("/register", methods = ["GET", "POST"])
@@ -117,9 +117,9 @@ def add_recipe():
             "prep_time": request.form.get("prep-time"),
             "cook_time": request.form.get("cook-time"),
             "dietary_requirements": request.form.get("diet"),
-            "allergens": request.form.get("allergens").split("/"),
-            "ingredients": request.form.get("ingredients").split("/"),
-            "steps": request.form.get("steps").split("/")
+            "allergens": request.form.get("allergens").split("*"),
+            "ingredients": request.form.get("ingredients").split("*"),
+            "steps": request.form.get("steps").split("*")
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully uploaded!")

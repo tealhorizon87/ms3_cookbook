@@ -108,19 +108,16 @@ nav li a {
   margin-top: 4rem;
 }
 
-/* -----------------------------------------------modals */
-.modal-footer a:nth-of-type(2):hover {
-  background-color: var(--my-red);
-}
-
 /* ------------------------------------------------forms */
 /* focus colours */
 .input-field input:not(.browser-default):focus:not([readonly]) + label,
+.input-field select:not(.browser-default):focus:not([readonly]) + label,
 .input-field textarea.materialize-textarea:focus:not([readonly]) + label {
   color: var(--my-grey);
 }
 
 .input-field input:not(.browser-default):focus:not([readonly]),
+.input-field select:not(.browser-default):focus:not([readonly]),
 .input-field textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid var(--my-grey);
   box-shadow: 0 1px 0 0 var(--my-grey);
@@ -131,12 +128,22 @@ nav li a {
 }
 
 .btn {
-  background-color: var(--my-grey);
+  background-color: var(--my-green);
   color: var(--my-white);
 }
 
 .btn:hover {
-  background-color: var(--my-green);
+  background-color: var(--my-orange);
+  color: var(--my-grey);
+}
+
+.cancel-button {
+  background-color: var(--my-red);
+}
+
+.cancel-button:hover {
+  background-color: var(--my-orange);
+  color: var(--my-grey);
 }
 
 [type="checkbox"]:checked + span:not(.lever):before {
