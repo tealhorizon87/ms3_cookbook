@@ -14,13 +14,14 @@
 
     <div class="row tile-grid">
       {% for recipe in recipes %}
-        <div class="card-panel hoverable tile">
-          <div class="card-content">
-            <h4 class="card-title">{{ recipe.recipe_title }}</h4>
-            <p>{{ recipe.recipe_description }}</p>
-            <p>Date uploaded (yy-mm-dd): {{ recipe.date_created }}</p>
+        <a class="tile" href="{{ url_for('recipe', recipe_id = recipe._id) }}">
+          <div class="card-panel hoverable">
+            <div class="card-content">
+              <h4 class="card-title">{{ recipe.recipe_title }}</h4>
+              <p>{{ recipe.recipe_description }}</p>
+            </div>
           </div>
-        </div>
+        </a>
       {% endfor %}
     </div>
   </section>

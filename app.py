@@ -122,7 +122,7 @@ def add_recipe():
             "ingredients": request.form.get("ingredients").split("*"),
             "steps": request.form.get("steps").split("*"),
             "created_by": session["user"],
-            "date_created": datetime.now().strftime('%y-%m-%d')
+            "date_created": datetime.now()
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully uploaded!")
@@ -131,6 +131,12 @@ def add_recipe():
     categories = mongo.db.categories.find().sort("category_name", 1)
     diets = mongo.db.diet.find().sort("diet_name", 1)
     return render_template("add-recipe.html", categories = categories, diets = diets)
+
+
+@app.route("/recipe/<recipe_id>", methods = ["GET", "POST"])
+def recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipe.html", recipe = recipe)
 
 
 if __name__ == "__main__":
