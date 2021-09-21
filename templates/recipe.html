@@ -45,7 +45,25 @@
         </ul>
       </div>
     </div>
+    {% if session.user == recipe.created_by %}
+    <div class="row">
+      <a href="{{ url_for('edit_recipe', recipe_id = recipe._id) }}" class="btn col s3 offset-s2">Edit Recipe</a>
+      <a href="#deleteModal" class="modal-trigger btn cancel-button col s3 offset-s2">Delete Recipe</a>
+    </div>
+    {% endif %}
   </div>
 </div>
+
+<section>
+  <div id="deleteModal" class="modal">
+    <div class="modal-content center-align">
+      <h3>Are you sure?</h3>
+    </div>
+    <div class="modal-footer center-align">
+      <a href="{{ url_for('delete_recipe', recipe_id = recipe._id) }}" class="modal-close btn">Delete Recipe</a>
+      <button class="modal-close btn cancel-button">Cancel</button>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

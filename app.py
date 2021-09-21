@@ -104,6 +104,12 @@ def logout():
     return redirect(url_for("home"))
 
 
+@app.route("/recipe/<recipe_id>", methods = ["GET", "POST"])
+def recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipe.html", recipe = recipe)
+
+
 @app.route("/add_recipe", methods = ["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
@@ -130,13 +136,21 @@ def add_recipe():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     diets = mongo.db.diet.find().sort("diet_name", 1)
-    return render_template("add-recipe.html", categories = categories, diets = diets)
+    return render_template(
+        "add-recipe.html", categories = categories, diets = diets)
 
 
-@app.route("/recipe/<recipe_id>", methods = ["GET", "POST"])
-def recipe(recipe_id):
+@app.route("/edit_recipe/<recipe_id>", methods = ["GET", "POST"])
+def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipe.html", recipe = recipe)
+    return render_template("edit-recipe.html", recipe = recipe)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("profile"))
 
 
 if __name__ == "__main__":
