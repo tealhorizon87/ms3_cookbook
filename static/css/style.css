@@ -113,6 +113,38 @@ nav li a {
   }
 }
 
+/* -----------------------------------------------recipe */
+.recipe-card .row {
+  margin-bottom: 0;
+}
+
+.recipe-card .row .col {
+  padding: 0 2rem;
+}
+
+.recipe-card p {
+  margin: 0;
+}
+
+.recipe-card ul {
+  list-style: none;
+}
+
+.recipe-card h2 {
+  margin-bottom: 0;
+}
+
+.specifications .col {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.recipe-steps li {
+  text-indent: -36px;
+  padding-left: 36px;
+}
+
 /* ------------------------------------------card styles */
 .my-card {
   margin-top: 4rem;
