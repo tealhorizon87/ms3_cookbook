@@ -61,6 +61,12 @@ nav li a {
   font-weight: 600;
 }
 
+/* -----------------------------------------------modals */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* -------------------------------------------------home */
 .hero-image-box {
   background: url("./../img/hero1.jpg") no-repeat center;
@@ -114,6 +120,10 @@ nav li a {
 }
 
 /* -----------------------------------------------recipe */
+.recipe-card .row:nth-child(5) {
+  margin: 2rem 0;
+}
+
 .recipe-card .row {
   margin-bottom: 0;
 }
@@ -177,6 +187,7 @@ nav li a {
 .btn:hover {
   background-color: var(--my-orange);
   color: var(--my-grey);
+  font-weight: bolder;
 }
 
 .cancel-button {
@@ -184,8 +195,20 @@ nav li a {
 }
 
 .cancel-button:hover {
+  background-color: var(--my-white);
+  color: var(--my-red);
+  font-weight: bolder;
+}
+
+.edit-button {
   background-color: var(--my-orange);
   color: var(--my-grey);
+}
+
+.edit-button:hover {
+  background-color: var(--my-grey);
+  color: var(--my-orange);
+  font-weight: bolder;
 }
 
 [type="checkbox"]:checked + span:not(.lever):before {

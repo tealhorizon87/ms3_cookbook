@@ -23,7 +23,8 @@
         <!-- category name -->
         <div class="row">
           <div class="input-field col s12">
-            <select id="category_name" name="category_name" class="validate" multiple required>
+            <select id="category_name" name="category_name" class="validate" required>
+              <option value="" disabled selected></option>
               {% for category in categories %}
                 <option value="{{ category.category_name }}">{{ category.category_name }}</option>
               {% endfor %}
@@ -78,7 +79,8 @@
         <div class="row">
           <h4>Dietary Requirements</h4>
           <div class="input-field col s12">
-            <select id="diet" name="diet" class="validate" multiple required>
+            <select id="diet" name="diet" class="validate" required>
+              <option value="" selected disabled></option>
               {% for diet in diets %}
                 <option value="{{ diet.diet_name }}">{{ diet.diet_name }}</option>
               {% endfor %}

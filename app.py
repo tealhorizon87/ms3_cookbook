@@ -142,15 +142,40 @@ def add_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods = ["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        is_private = "on" if request.form.get("is_private") else "off"
+        submit = {
+            "recipe_title": request.form.get("title"),
+            "category_name": request.form.get("category_name"),
+            "recipe_description": request.form.get("description"),
+            "difficulty": request.form.get("difficulty"),
+            "is_private": is_private,
+            "servings": request.form.get("servings"),
+            "prep_time": request.form.get("prep-time"),
+            "cook_time": request.form.get("cook-time"),
+            "dietary_requirements": request.form.get("diet"),
+            "allergens": request.form.get("allergens").split("*"),
+            "ingredients": request.form.get("ingredients").split("*"),
+            "steps": request.form.get("steps").split("*"),
+            "created_by": session["user"],
+            "date_created": datetime.now()
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe updated")
+        return redirect(url_for("profile", username = session['user']))
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    diets = mongo.db.diet.find().sort("diet_name", 1)
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("edit-recipe.html", recipe = recipe)
+    return render_template("edit-recipe.html",
+        recipe = recipe, diets = diets, categories = categories)
 
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
-    return redirect(url_for("profile"))
+    return redirect(url_for("profile", username = session['user']))
 
 
 if __name__ == "__main__":

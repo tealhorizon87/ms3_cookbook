@@ -10,12 +10,12 @@
 {% block content %}
   <div class="row my-card">
     <div class="card-panel col s10 m8 offset-s1 offset-m2">
-      <h2 class="center-align">Add a Recipe</h2>
-      <form class="col s12 m10 offset-m1" action="{{ url_for('add_recipe') }}" method="POST">
+      <h2 class="center-align">Edit Recipe</h2>
+      <form class="col s12 m10 offset-m1" action="{{ url_for('edit_recipe', recipe_id = recipe._id) }}" method="POST">
         <!-- recipe title -->
         <div class="row">
           <div class="input-field col s12">
-            <input id="title" name="title" type="text"  minlength="5"
+            <input id="title" name="title" type="text" value="{{ recipe.recipe_title }}" minlength="5"
               maxlength="50" pattern="[a-zA-Z ]{5,50}$" class="validate" required>
             <label for="title">Recipe Title</label>
           </div>
@@ -23,9 +23,13 @@
         <!-- category name -->
         <div class="row">
           <div class="input-field col s12">
-            <select id="category_name" name="category_name" class="validate" multiple required>
+            <select id="category_name" name="category_name" class="validate" required>
               {% for category in categories %}
-                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                {% if category.category_name == recipe.category_name %}
+                  <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                {% else %}
+                  <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                {% endif %}
               {% endfor %}
             </select>
             <label for="category_name">Choose relevant categories</label>
@@ -35,7 +39,7 @@
         <div class="row">
           <div class="input-field col s12">
             <textarea id="description" class="materialize-textarea validate" name="description"
-              pattern="[a-zA-Z ]{5,150}$" minlength="5" maxlength="150" required></textarea>
+              pattern="[a-zA-Z ]{5,150}$" minlength="5" maxlength="150" required>{{ recipe.recipe_description }}</textarea>
             <label for="description">Description</label>
           </div>
         </div>
@@ -44,16 +48,34 @@
           <div class="input-field col s6">
             <select id="difficulty" name="difficulty" class="validate" required>
               <option value="" disabled selected></option>
-              <option value="easy">Easy</option>
-              <option value="moderate">Moderate</option>
-              <option value="hard">Hard</option>
+              {% if recipe.difficulty == "easy" %}
+                <option value="easy" selected>Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="hard">Hard</option>
+              {% elif recipe.difficulty == "moderate" %}
+                <option value="easy">Easy</option>
+                <option value="moderate" selected>Moderate</option>
+                <option value="hard">Hard</option>
+              {% elif recipe.difficulty == "hard" %}
+                <option value="easy">Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="hard" selected>Hard</option>
+              {% else %}
+                <option value="easy">Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="hard">Hard</option>
+              {% endif %}
             </select>
             <label for="difficulty">Difficulty</label>
           </div>
           <div class="switch col s6">
             <p>Would you like to make this private?</p>
             <label for="is_private">
-              <input type="checkbox" id="is_private" name="is_private">
+              {% if recipe.is_private == "on" %}
+                <input type="checkbox" id="is_private" name="is_private" checked>
+              {% else %}
+                <input type="checkbox" id="is_private" name="is_private">
+              {% endif %}
               <span class="lever"></span>
               Private
             </label>
@@ -63,24 +85,31 @@
         <div class="row">
           <div class="input-field col s4">
             <p>Servings</p>
-            <input type="number" id="servings" name="servings" class="validate" min="1" max="12" required>
+            <input type="number" id="servings" name="servings" class="validate"
+              value="{{ recipe.servings }}" min="1" max="12" required>
           </div>
           <div class="input-field col s4">
             <p>Prep time (mins)</p>
-            <input type="number" id="prep-time" name="prep-time" class="validate" min="5" max="90" step="5" required>
+            <input type="number" id="prep-time" name="prep-time" class="validate" min="5" max="90" step="5"
+              value="{{ recipe.prep_time }}" required>
           </div>
           <div class="input-field col s4">
             <p>Cook time (mins)</p>
-            <input type="number" id="cook-time" name="cook-time" class="validate" min="5" max="300" step="5" required>
+            <input type="number" id="cook-time" name="cook-time" class="validate" min="5" max="300" step="5"
+              value="{{ recipe.cook_time }}" required>
           </div>
         </div>
         <!-- Dietary requirements and allergens -->
         <div class="row">
           <h4>Dietary Requirements</h4>
           <div class="input-field col s12">
-            <select id="diet" name="diet" class="validate" multiple required>
+            <select id="diet" name="diet" class="validate" required>
               {% for diet in diets %}
-                <option value="{{ diet.diet_name }}">{{ diet.diet_name }}</option>
+                {% if diet.diet_name == recipe.diet_name %}
+                  <option value="{{ diet.diet_name }}" selected>{{ diet.diet_name }}</option>
+                {% else %}
+                  <option value="{{ diet.diet_name }}">{{ diet.diet_name }}</option>
+                {% endif %}
               {% endfor %}
             </select>
             <label for="diet">Diet type</label>
@@ -88,9 +117,10 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
+            <p>Allergens - seperated with a "*" (nuts*shellfish - etc or none)</p>
             <textarea id="allergens" class="materialize-textarea validate" name="allergens"
-              pattern="[a-zA-Z]{5,150}$" minlength="4" maxlength="150" required></textarea>
-            <label for="allergens">Allergens - seperated with a "*" (nuts*shellfish - etc or none)</label>
+              pattern="[a-zA-Z]{5,150}$" minlength="4" maxlength="150" required>{{ recipe.allergens }}</textarea>
+            <label for="allergens">Allergens</label>
           </div>
         </div>
         <!-- Ingredients -->
@@ -99,8 +129,8 @@
           <p>Add each ingredient quantity then name, and seperate each one with a "*" (350g flour*200g sugar - etc)</p>
           <div class="input-field col s12">
             <textarea id="ingredients" class="materialize-textarea validate" name="ingredients"
-              pattern="[a-zA-Z ]{5,1000}$" minlength="5" maxlength="1000" required></textarea>
-              <label for="ingredients">Ingredients</label>
+              pattern="[a-zA-Z ]{5,1000}$" minlength="5" maxlength="1000" required>{{ recipe.ingredients }}</textarea>
+            <label for="ingredients">Ingredients</label>
           </div>
         </div>
         <!-- Steps -->
@@ -109,13 +139,13 @@
           <p>Add each step and seperate them with a "*" (chop something*cook something - etc)</p>
           <div class="input-field col s12">
             <textarea id="steps" class="materialize-textarea validate" name="steps"
-              pattern="[a-zA-Z ]{5,2000}$" minlength="5" maxlength="2000"required></textarea>
+              pattern="[a-zA-Z ]{5,2000}$" minlength="5" maxlength="2000" required>{{ recipe.steps }}</textarea>
               <label for="steps">Steps</label>
           </div>
         </div>
-        <div class="row">
-          <button type="submit" name="button" class="btn col s3 offset-s2">Upload</button>
-          <a href="{{ url_for('add_recipe') }}" class="btn cancel-button col s3 offset-s2">Cancel</a>
+        <div class="row edit-buttons">
+          <button type="submit" name="button" class="btn col s3 offset-s2 edit-button">Edit</button>
+          <a href="{{ url_for('profile', username = session['user']) }}" class="btn cancel-button col s3 offset-s2">Cancel</a>
         </div>
       </form>
     </div>
