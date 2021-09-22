@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    recipes = list(mongo.db.recipes.find())
+    recipes = list(mongo.db.recipes.find({"is_private": "off"}))
     return render_template("home.html", recipes = recipes)
 
 
@@ -168,8 +168,12 @@ def edit_recipe(recipe_id):
     categories = mongo.db.categories.find().sort("category_name", 1)
     diets = mongo.db.diet.find().sort("diet_name", 1)
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    allergens = '*'.join(recipe["allergens"])
+    ingredients = '*'.join(recipe["ingredients"])
+    steps = '*'.join(recipe["steps"])
     return render_template("edit-recipe.html",
-        recipe = recipe, diets = diets, categories = categories)
+        recipe = recipe, diets = diets, categories = categories,
+        allergens = allergens, ingredients = ingredients, steps = steps)
 
 
 @app.route("/delete_recipe/<recipe_id>")

@@ -163,13 +163,11 @@ nav li a {
 /* ------------------------------------------------forms */
 /* focus colours */
 .input-field input:not(.browser-default):focus:not([readonly]) + label,
-.input-field select:not(.browser-default):focus:not([readonly]) + label,
 .input-field textarea.materialize-textarea:focus:not([readonly]) + label {
   color: var(--my-grey);
 }
 
 .input-field input:not(.browser-default):focus:not([readonly]),
-.input-field select:not(.browser-default):focus:not([readonly]),
 .input-field textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid var(--my-grey);
   box-shadow: 0 1px 0 0 var(--my-grey);
@@ -211,9 +209,14 @@ nav li a {
   font-weight: bolder;
 }
 
-[type="checkbox"]:checked + span:not(.lever):before {
+.switch label input[type="checkbox"]:checked + .lever:after {
+  background-color: var(--my-green);
   border-right: 2px solid var(--my-green);
   border-bottom: 2px solid var(--my-green);
+}
+
+.switch label input[type="checkbox"]:checked + .lever {
+  background-color: #00660033;
 }
 
 .switch p {
