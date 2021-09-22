@@ -15,22 +15,32 @@
       <div class="row">
         <form class="col s10 m8 offset-m2" action="{{ url_for('register') }}" method="POST">
           <div class="row">
+            <!-- emial input -->
+            <div class="input-field col s12">
+              <i class="fas fa-at prefix"></i>
+              <input id="email" name="email" type="email"  minlength="5"
+                maxlength="40" pattern="[a-zA-Z0-9]{5,40}$" class="validate" required>
+              <label for="username">Email Address</label>
+            </div>
+            <!-- username selection -->
             <div class="input-field col s12">
               <i class="fas fa-user-plus prefix"></i>
               <input id="username" name="username" type="text"  minlength="5"
-                maxlength="15" pattern="[a-zA-Z0-9]{5-15}$" class="validate" required>
+                maxlength="15" pattern="[a-zA-Z0-9]{5,15}$" class="validate" required>
               <label for="username">Username</label>
             </div>
+            <!-- password selection -->
             <div class="input-field col s12">
               <i class="fas fa-user-lock prefix"></i>
               <input id="password" name="password" type="password"  minlength="5"
-                maxlength="15" pattern="[a-zA-Z0-9]{5-15}$" class="validate" required>
+                maxlength="15" pattern="[a-zA-Z0-9]{5,15}$" class="validate" required>
               <label for="password">Password</label>
             </div>
+            <!-- password verification -->
             <div class="input-field col s12">
               <i class="fas fa-user-lock prefix"></i>
               <input id="password-confirm" name="password-confirm" type="password"  minlength="5"
-                maxlength="15" pattern="[a-zA-Z0-9]{5-15}$" class="validate" required>
+                maxlength="15" pattern="[a-zA-Z0-9]{5,15}$" class="validate" required>
               <label for="password-confirm">Confirm Password</label>
             </div>
             <button type="submit" name="button" class="btn col s4 offset-s4">Register</button>

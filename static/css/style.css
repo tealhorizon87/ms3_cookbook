@@ -93,6 +93,10 @@ nav li a {
   width: 30%;
 }
 
+.fixed-height {
+  height: 180px;
+}
+
 #flashMessages {
   -moz-animation: cssAnimation 0s ease-in 5s forwards;
   /* Firefox */

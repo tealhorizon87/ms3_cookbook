@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    recipes = list(mongo.db.recipes.find({"is_private": "off"}))
+    recipes = list(mongo.db.recipes.find({"is_private": "off"}).sort("date_created", -1).limit(20))
     return render_template("home.html", recipes = recipes)
 
 
@@ -43,6 +43,7 @@ def register():
             return redirect(url_for("register"))
 
         register = {
+            "email": request.form.get("email"),
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
