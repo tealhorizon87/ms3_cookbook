@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block styles %}
+  <style>
+    body {
+      background: url("{{ url_for('static', filename='img/hero3.jpg') }}") no-repeat center fixed;
+      background-size: cover;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <div class="row my-card">
+    <div class="card-panel col s10 m8 offset-s1 offset-m2">
+      <h2 class="center-align">Edit User</h2>
+      <div class="row">
+        <form class="col s10 m8 offset-m2" action="{{ url_for('edit_user', user_id = user._id) }}" method="POST">
+          <div class="row">
+            <!-- emial input -->
+            <div class="input-field col s12">
+              <i class="fas fa-at prefix"></i>
+              <input id="email" name="email" type="email"  minlength="5"
+                maxlength="40" pattern="[a-zA-Z0-9]{5,40}$" class="validate" value="{{ user.email }}" required>
+              <label for="email">Email Address</label>
+            </div>
+            <!-- username selection -->
+            <div class="input-field col s12">
+              <i class="fas fa-user-plus prefix"></i>
+              <input id="username" name="username" type="text"  minlength="5"
+                maxlength="15" pattern="[a-zA-Z0-9]{5,15}$" class="validate" value="{{ user.username }}" required>
+              <label for="username">Username</label>
+            </div>
+            <div class="row edit-buttons center-align">
+              <button type="submit" name="button" class="btn edit-button">Edit</button>
+              <a href="#userModal" class="btn cancel-button modal-trigger">Delete</a>
+              <a href="" class="btn cancel-button">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div id="userModal" class="modal">
+      <div class="modal-content center-align">
+        <h3>Are you sure?</h3>
+      </div>
+      <div class="row">
+        <div class="col s10 m6 offset-s1 offset-m3 modal-footer">
+          <a href="{{ url_for('delete_user', user_id = user._id) }}" class="modal-close btn">Delete User</a>
+          <button class="modal-close btn cancel-button">Cancel</button>
+        </div>
+    </div>
+  </section>
+{% endblock %}

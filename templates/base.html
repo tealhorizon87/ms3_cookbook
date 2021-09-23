@@ -30,9 +30,6 @@
               <li><a href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
               <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
               <li><a href="#logoutModal" class="modal-trigger">Log out</a></li>
-              {% if session.user|lower == "admin"|lower %}
-                <li><a href="#">Manage Categories</a></li>
-              {% endif %}
             {% else %}
               <li><a href="{{ url_for('login') }}">Log in</a></li>
               <li><a href="{{ url_for('register') }}">Register</a></li>
@@ -65,9 +62,6 @@
           <li><a href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
           <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
           <li><a href="#logoutModal" class="modal-trigger">Log out</a></li>
-          {% if session.user|lower == "admin"|lower %}
-            <li><a href="#">Manage Categories</a></li>
-          {% endif %}
         {% else %}
           <li><a href="{{ url_for('login') }}">Log in</a></li>
           <li><a href="{{ url_for('register') }}">Register</a></li>

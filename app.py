@@ -94,7 +94,9 @@ def profile(username):
 
     if session["user"]:
         recipes = list(mongo.db.recipes.find({"created_by": session["user"]}))
-        return render_template("profile.html", username = username, recipes = recipes)
+        users = mongo.db.users.find().sort("username", 1)
+        categories = mongo.db.categories.find().sort("category_name", 1)
+        return render_template("profile.html", username = username, recipes = recipes, categories = categories, users = users)
 
     return redirect(url_for("login"))
 
@@ -196,7 +198,50 @@ def search():
         flash("No results found")
         return redirect(url_for("home"))
 
-    
+
+@app.route("/edit_category/<category_id>", methods = ["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Updated")
+        return redirect(url_for("profile", username = session['user']))
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit-category.html", category = category)
+
+
+@app.route("/delete_category/<category_id>")
+def delete_category(category_id):
+    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    flash("Category Successfully Deleted")
+    return redirect(url_for("profile", username = session['user']))
+
+
+@app.route("/edit_user/<user_id>", methods = ["GET", "POST"])
+def edit_user(user_id):
+    if request.method == "POST":
+        submit = {
+            "email": request.form.get("email"),
+            "username": request.form.get("username"),
+        }
+        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+        flash("User Details Updated")
+        return redirect(url_for("profile", username = session['user']))
+
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    return render_template("edit-user.html", user = user)
+
+
+@app.route("/delete_user/<user_id>")
+def delete_user(user_id):
+    mongo.db.users.remove({"_id": ObjectId(user_id)})
+    flash("User Successfully Deleted")
+    return redirect(url_for("profile", username = session['user']))
+
+
 if __name__ == "__main__":
     app.run(host = os.environ.get("IP"),
             port = int(os.environ.get("PORT")),

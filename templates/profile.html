@@ -9,27 +9,67 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row">
-    <div class="col s10 m8 offset-s1 offset-m2 card-panel">
-      <h2 class="center-align">
-        {{ username }}'s Profile
-      </h2>
+  {% if session.user|lower == "admin"|lower %}
+    <div class="row">
+      <div class="col s10 m8 offset-s1 offset-m2 card-panel">
+        <h2 class="center-align">Admin Functions</h2>
+      </div>
     </div>
-  </div>
+  {% else %}
+    <div class="row">
+      <div class="col s10 m8 offset-s1 offset-m2 card-panel">
+        <h2 class="center-align">
+          {{ username }}'s Profile
+        </h2>
+      </div>
+    </div>
+  {% endif %}
 
+  {% if session.user|lower == "admin"|lower %}
   <section class="card-panel">
-    <h2 class="center-align">My Recipes</h2>
+    <h2 class="center-align">Manage Categories</h2>
     <div class="row tile-grid">
-      {% for recipe in recipes %}
-        <a class="tile" href="{{ url_for('recipe', recipe_id = recipe._id) }}">
+      {% for category in categories %}
+        <a class="tile" href="{{ url_for('edit_category', category_id = category._id) }}">
           <div class="card-panel hoverable">
             <div class="card-content">
-              <h4 class="card-title">{{ recipe.recipe_title }}</h4>
-              <p>{{ recipe.recipe_description }}</p>
+              <h5 class="card-title center-align">{{ category.category_name }}</h5>
             </div>
           </div>
         </a>
       {% endfor %}
     </div>
   </section>
+  <section class="card-panel">
+    <h2 class="center-align">Manage Users</h2>
+    <div class="row tile-grid">
+      {% for user in users %}
+        <a class="tile" href="{{ url_for('edit_user', user_id = user._id) }}">
+          <div class="card-panel hoverable">
+            <div class="card-content">
+              <h5 class="card-title center-align">{{ user.username }}</h5>
+              <p>{{ user.email }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% else %}
+    <section class="card-panel">
+      <h2 class="center-align">My Recipes</h2>
+      <div class="row tile-grid">
+        {% for recipe in recipes %}
+          <a class="tile" href="{{ url_for('recipe', recipe_id = recipe._id) }}">
+            <div class="card-panel hoverable">
+              <div class="card-content">
+                <h4 class="card-title">{{ recipe.recipe_title }}</h4>
+                <p>{{ recipe.recipe_description }}</p>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
 {% endblock %}
