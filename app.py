@@ -184,6 +184,11 @@ def delete_recipe(recipe_id):
     return redirect(url_for("profile", username = session['user']))
 
 
+@app.route("/search", methods = ["GET", "POST"])
+def search():
+    return render_template("home.html")
+
+
 if __name__ == "__main__":
     app.run(host = os.environ.get("IP"),
             port = int(os.environ.get("PORT")),

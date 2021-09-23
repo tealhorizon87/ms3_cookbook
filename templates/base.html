@@ -34,14 +34,32 @@
                 <li><a href="#">Manage Categories</a></li>
               {% endif %}
             {% else %}
-            <li><a href="{{ url_for('login') }}">Log in</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
+              <li><a href="{{ url_for('login') }}">Log in</a></li>
+              <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
+            <li>
+              <form action="{{ url_for('search') }}" method="POST">
+                <div class="valign-wrapper">
+                  <input type="text" name="query" id="query" minlength="3"
+                    placeholder="Search Recipes" required>
+                  <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+              </form>
+            </li>
           </ul>
         </div>
       </nav>
 
       <ul class="sidenav" id="mobile-menu">
+        <li>
+          <form action="{{ url_for('search') }}" method="POST">
+            <div class="valign-wrapper">
+              <input type="text" name="query" id="query" minlength="3"
+                placeholder="Search Recipes" required>
+              <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+            </div>
+          </form>
+        </li>
         <li><a href="{{ url_for('home') }}">Home</a></li>
         {% if session.user %}
           <li><a href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
@@ -51,8 +69,8 @@
             <li><a href="#">Manage Categories</a></li>
           {% endif %}
         {% else %}
-        <li><a href="{{ url_for('login') }}">Log in</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
+          <li><a href="{{ url_for('login') }}">Log in</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
       </ul>
     </header>
@@ -62,8 +80,8 @@
       {% with messages = get_flashed_messages() %}
         {% if messages %}
           {% for message in messages %}
-            <div class="row">
-              <div  id="flashMessages" class="col s10 m8 offset-s1 offset-m2 flashes card-panel">
+            <div class="row" id="flashMessages" >
+              <div class="col s10 m8 offset-s1 offset-m2 flashes card-panel">
                 <h3 class="center-align">{{ message }}</h3>
               </div>
             </div>
@@ -72,7 +90,7 @@
       {% endwith %}
     </section>
 
-    <main>
+    <main class="container">
       {% block content %}
       {% endblock %}
     </main>

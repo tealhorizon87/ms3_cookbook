@@ -49,7 +49,8 @@ nav {
 }
 
 nav a,
-nav li a {
+nav li a,
+nav li i {
   color: var(--my-grey);
 }
 
@@ -225,4 +226,37 @@ nav li a {
 
 .switch p {
   margin-top: 0;
+}
+
+#query {
+  height: 2rem;
+}
+
+.search-button {
+  background-color: inherit;
+  border: none;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: var(--my-grey);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: var(--my-grey);
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: var(--my-grey);
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: var(--my-grey);
+}
+
+#mobile-menu li form {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
