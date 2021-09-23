@@ -21,7 +21,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    recipes = list(mongo.db.recipes.find({"is_private": "off"}).sort("date_created", -1).limit(20))
+    recipes = list(mongo.db.recipes.find(
+        {"is_private": "off"}).sort("date_created", -1).limit(20))
     return render_template("home.html", recipes = recipes)
 
 
@@ -186,9 +187,16 @@ def delete_recipe(recipe_id):
 
 @app.route("/search", methods = ["GET", "POST"])
 def search():
-    return render_template("home.html")
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find(
+        {"is_private": "off", "$text": {"$search": query}}))
+    if recipes:
+        return render_template("home.html", recipes = recipes)
+    else:
+        flash("No results found")
+        return redirect(url_for("home"))
 
-
+    
 if __name__ == "__main__":
     app.run(host = os.environ.get("IP"),
             port = int(os.environ.get("PORT")),
