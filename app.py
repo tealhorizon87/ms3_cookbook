@@ -213,6 +213,17 @@ def edit_category(category_id):
     return render_template("edit-category.html", category = category)
 
 
+@app.route("/add_category", methods = ["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category")
+        }
+        mongo.db.categories.insert_one(category)
+        flash("Category Added")
+        return redirect(url_for("profile", username = session['user']))
+
+
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
