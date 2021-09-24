@@ -68,6 +68,14 @@ nav li i {
   justify-content: space-between;
 }
 
+.error {
+  color: var(--my-red);
+}
+
+.success {
+  color: var(--my-green);
+}
+
 /* -------------------------------------------------home */
 .hero-image-box {
   background: url("./../img/hero1.jpg") no-repeat center;
