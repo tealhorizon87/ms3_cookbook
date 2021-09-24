@@ -17,6 +17,14 @@
           <p>{{ recipe.recipe_description }}</p>
         </div>
       </div>
+      <div class="row">
+        <div class="favorites col s6 offset-s3 valign-wrapper">
+          <span><strong>Add to favorites:</strong></span>
+          <a href="{{ url_for('add_favorite', recipe_id = recipe._id) }}">
+            <i class="far fa-thumbs-up"></i>
+          </a>
+        </div>
+      </div>
       <div class="row specifications">
         <div class="col s10 offset-s1">
           <p><strong>Serving:</strong> {{ recipe.servings }}</p>

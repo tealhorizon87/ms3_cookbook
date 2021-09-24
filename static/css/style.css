@@ -160,6 +160,21 @@ nav li i {
   padding-left: 36px;
 }
 
+.favorites {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.favorites span {
+  padding-right: 0.5rem;
+}
+
+.favorites i {
+  font-size: 150%;
+  color: var(--my-grey);
+}
+
 /* ------------------------------------------card styles */
 .my-card {
   margin-top: 4rem;

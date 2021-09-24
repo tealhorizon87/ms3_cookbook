@@ -94,9 +94,13 @@ def profile(username):
 
     if session["user"]:
         recipes = list(mongo.db.recipes.find({"created_by": session["user"]}))
+        favorites = mongo.db.users.find_one(
+            {"username": session["user"]})["my_favorites"]
+        my_favorites = [mongo.db.recipes.find_one({"_id": ObjectId(favorite)}) for favorite in favorites]
         users = mongo.db.users.find().sort("username", 1)
         categories = mongo.db.categories.find().sort("category_name", 1)
-        return render_template("profile.html", username = username, recipes = recipes, categories = categories, users = users)
+        return render_template("profile.html", username = username,
+            recipes = recipes, categories = categories, users = users, my_favorites = my_favorites)
 
     return redirect(url_for("login"))
 
@@ -251,6 +255,16 @@ def delete_user(user_id):
     mongo.db.users.remove({"_id": ObjectId(user_id)})
     flash("User Successfully Deleted")
     return redirect(url_for("profile", username = session['user']))
+
+
+@app.route("/add_favorite/<recipe_id>", methods = ["GET", "POST"])
+def add_favorite(recipe_id):
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    mongo.db.users.update({"_id": ObjectId(user_id)}, {"$push": {
+        "my_favorites": recipe_id}})
+    flash("Added to favorites")
+    return redirect(url_for("recipe", recipe_id = recipe_id))
 
 
 if __name__ == "__main__":
