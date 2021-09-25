@@ -63,7 +63,7 @@
         </div>
       </div>
       {% if session.user == recipe.created_by %}
-      <div class="row">
+      <div class="row buttons-row">
         <a href="{{ url_for('edit_recipe', recipe_id = recipe._id) }}" class="btn col s3 offset-s2 edit-button">Edit Recipe</a>
         <a href="#deleteModal" class="modal-trigger btn cancel-button col s3 offset-s2">Delete Recipe</a>
       </div>

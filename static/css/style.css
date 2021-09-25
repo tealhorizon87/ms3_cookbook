@@ -132,6 +132,11 @@ nav {
 /* -----------------------------------------------recipe */
 .steps-row {
   margin: 2rem 0;
+  padding-bottom: 2rem;
+}
+
+.buttons-row {
+  padding-bottom: 2rem;
 }
 
 .recipe-card .row {
