@@ -94,16 +94,14 @@ nav li i {
 
 .tile-grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .tile {
-  width: 30%;
-}
-
-.fixed-height {
-  height: 180px;
+  width: 300px;
+  height: 300px;
+  margin: 1rem;
 }
 
 #flashMessages {
