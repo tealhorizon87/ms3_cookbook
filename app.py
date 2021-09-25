@@ -46,7 +46,8 @@ def register():
         register = {
             "email": request.form.get("email"),
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "my_favorites": []
         }
         # enter the new user to the users collection
         mongo.db.users.insert_one(register)
@@ -148,7 +149,7 @@ def add_recipe():
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe successfully uploaded!", "success")
-        return redirect(url_for("home"))
+        return redirect(url_for("profile", username = session['user']))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     diets = mongo.db.diet.find().sort("diet_name", 1)
