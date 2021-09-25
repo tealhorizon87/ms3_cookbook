@@ -7,6 +7,7 @@
   --my-white: #fafafa;
 }
 
+/* applies a film over the background to make it less intense */
 body::before {
   content: "";
   position: fixed;
@@ -48,9 +49,7 @@ nav {
   z-index: +2;
 }
 
-nav a,
-nav li a,
-nav li i {
+.nav-wrapper a {
   color: var(--my-grey);
 }
 
@@ -68,6 +67,7 @@ nav li i {
   justify-content: space-between;
 }
 
+/* flash styling */
 .error {
   color: var(--my-red);
 }
@@ -76,20 +76,10 @@ nav li i {
   color: var(--my-green);
 }
 
-/* -------------------------------------------------home */
-.hero-image-box {
-  background: url("./../img/hero1.jpg") no-repeat center;
-  background-size: cover;
-  height: 500px;
-}
-
+/* -----------------------------------------card styling */
 .card-panel {
   background-color: var(--my-white);
   color: var(--my-grey);
-}
-
-.browse-panel {
-  margin-top: 500px;
 }
 
 .tile-grid {
@@ -104,13 +94,22 @@ nav li i {
   margin: 1rem;
 }
 
+.my-card {
+  margin-top: 4rem;
+}
+
+/* -------------------------------------------------home */
+.hero-image-box {
+  background: url("./../img/hero1.jpg") no-repeat center;
+  background-size: cover;
+  height: 500px;
+}
+
+.browse-panel {
+  margin-top: 500px;
+}
+
 #flashMessages {
-  -moz-animation: cssAnimation 0s ease-in 5s forwards;
-  /* Firefox */
-  -webkit-animation: cssAnimation 0s ease-in 5s forwards;
-  /* Safari and Chrome */
-  -o-animation: cssAnimation 0s ease-in 5s forwards;
-  /* Opera */
   animation: cssAnimation 0s ease-in 5s forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
@@ -131,7 +130,7 @@ nav li i {
 }
 
 /* -----------------------------------------------recipe */
-.recipe-card .row:nth-child(5) {
+.steps-row {
   margin: 2rem 0;
 }
 
@@ -143,22 +142,18 @@ nav li i {
   padding: 0 2rem;
 }
 
-.recipe-card p {
-  margin: 0;
-}
-
 .recipe-card ul {
   list-style: none;
 }
 
-.recipe-card h2 {
-  margin-bottom: 0;
-}
-
 .specifications .col {
   display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.specifications .col p {
+  margin: 0 2rem;
 }
 
 .recipe-steps li {
@@ -181,11 +176,6 @@ nav li i {
   color: var(--my-grey);
 }
 
-/* ------------------------------------------card styles */
-.my-card {
-  margin-top: 4rem;
-}
-
 /* ------------------------------------------------forms */
 /* focus colours */
 .input-field input:not(.browser-default):focus:not([readonly]) + label,
@@ -203,7 +193,8 @@ nav li i {
   color: var(--my-grey);
 }
 
-.btn {
+.btn,
+.btn:focus {
   background-color: var(--my-green);
   color: var(--my-white);
 }
@@ -214,7 +205,8 @@ nav li i {
   font-weight: bolder;
 }
 
-.cancel-button {
+.cancel-button,
+.cancel-button:focus {
   background-color: var(--my-red);
 }
 
@@ -249,15 +241,6 @@ nav li i {
   margin-top: 0;
 }
 
-#query {
-  height: 2rem;
-}
-
-.search-button {
-  background-color: inherit;
-  border: none;
-}
-
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: var(--my-grey);
@@ -268,16 +251,18 @@ nav li i {
   /* Firefox 19+ */
   color: var(--my-grey);
 }
-:-ms-input-placeholder {
-  /* IE 10+ */
-  color: var(--my-grey);
-}
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: var(--my-grey);
-}
 
 #mobile-menu li form {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+/* -------------------------------------------Search Bar */
+#query {
+  height: 2rem;
+}
+
+.search-button {
+  background-color: inherit;
+  border: none;
 }
