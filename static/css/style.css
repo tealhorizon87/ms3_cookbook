@@ -105,8 +105,30 @@ nav {
   height: 500px;
 }
 
+.spacer {
+  padding-top: 4rem;
+}
+
+.title-panel {
+  background-color: #fafafaee;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.title-panel a {
+  color: var(--my-green);
+  font-weight: bold;
+}
+
+.tag-line {
+  font-size: 200%;
+  margin-top: 0;
+}
+
 .browse-panel {
-  margin-top: 500px;
+  margin-top: 150px;
 }
 
 #flashMessages {

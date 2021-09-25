@@ -9,8 +9,19 @@
 {% endblock %}
 
 {% block content %}
+  <section class="row spacer">
+    <div class="col s12 m8 offset-m2 center-align title-panel">
+      <h1>Cookbook</h1>
+      <p class="tag-line">All your recipes in one place</p>
+      <p>
+        <a href="{{ url_for('login') }}">Log in</a> or <a href="{{ url_for('register') }}">Register</a> here to start
+          sharing your favorite recipes with our community
+      </p>
+    </div>
+  </section>
+
   <section class="card-panel browse-panel">
-    <h2 class="center-align">Browse Recipes</h2>
+    <h3 class="center-align">Recently Added Recipes</h3>
 
     <div class="row tile-grid">
       {% for recipe in recipes %}
