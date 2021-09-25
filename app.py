@@ -116,11 +116,14 @@ def logout():
 @app.route("/recipe/<recipe_id>", methods = ["GET", "POST"])
 def recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    favorites = mongo.db.users.find_one(
-        {"username": session["user"]})["my_favorites"]
-    is_favorite = "yes" if recipe_id in favorites else "no"
-    return render_template("recipe.html", recipe = recipe,
-        favorites = favorites, is_favorite = is_favorite)
+    if session:
+        favorites = mongo.db.users.find_one(
+            {"username": session["user"]})["my_favorites"]
+        is_favorite = "yes" if recipe_id in favorites else "no"
+        return render_template("recipe.html", recipe = recipe,
+            favorites = favorites, is_favorite = is_favorite)
+
+    return render_template("recipe.html", recipe = recipe)
 
 
 @app.route("/add_recipe", methods = ["GET", "POST"])
