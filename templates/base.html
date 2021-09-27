@@ -75,8 +75,8 @@
         {% if messages %}
           {% for category, message in messages %}
             <div class="row" id="flashMessages" >
-              <div class="col s10 m8 offset-s1 offset-m2 flashes card-panel">
-                <h3 class="center-align  {{ category }}">{{ message }}</h3>
+              <div class="col s10 m8 offset-s1 offset-m2 flashes card-panel {{ category }}">
+                <h3 class="center-align">{{ message }}</h3>
               </div>
             </div>
           {% endfor %}
@@ -89,6 +89,7 @@
       {% endblock %}
     </main>
 
+    <!-- logout modal -->
     <section>
       <div id="logoutModal" class="modal">
         <div class="modal-content center-align">

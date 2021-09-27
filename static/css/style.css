@@ -5,6 +5,7 @@
   --my-orange: #ff9747;
   --my-grey: #474747;
   --my-white: #fafafa;
+  --my-beige: #e9d1ac;
 }
 
 /* applies a film over the background to make it less intense */
@@ -87,10 +88,18 @@ nav {
 
 /* flash styling */
 .error {
+  border: 10px solid var(--my-red);
+}
+
+.error h3 {
   color: var(--my-red);
 }
 
 .success {
+  border: 10px solid var(--my-green);
+}
+
+.success h3 {
   color: var(--my-green);
 }
 
@@ -110,6 +119,7 @@ nav {
   width: 300px;
   height: 300px;
   margin: 1rem;
+  background-color: var(--my-beige);
 }
 
 .my-card {
