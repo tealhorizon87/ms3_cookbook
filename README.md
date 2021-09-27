@@ -2,7 +2,7 @@
 
 Cookbook is an application designed to allow users to store their favourite food recipes and share them with other users. This project is the third milestone project as part of the Code Institute Diploma course. The deployed site can be viewed [here](#)
 
-![mockup](#)
+![mockup](static/img/mock-up.png)
 
 ## Table of Contents
 1. [UX](#ux)
@@ -80,7 +80,9 @@ Back to [Table of Contents](#table-of-contents)
 - A comment box below the recipe to allow users to interact with the community and author
 
 ### Future Features
-- Add a 'stats' section to the recipe header to allow people to see how many times a recipe has been used
+- Add a 5-star (or similar) rating system to allow users to rate other user's recipes
+- Add a comments section to the bottom of the recipe card to allow users to provide relative feedback to the author of the recipe
+- Add a profile dropdown on the menu and include the ability to remove one's account and to contact the application's owner
 
 ## Technologies Used
 ### Languages:
@@ -122,5 +124,40 @@ Back to [Table of Contents](#table-of-contents)
 ## Testing
 
 ## Deployment
+### Heroku
+Deployment for this project is via [Heroku](https://www.heroku.com).
+1. Create a requirements.txt file by typing pip3 freeze --local > requirements.txt in your repository terminal
+2. Create a Procfile so that Heroku knows how to run the app. Do this by typing echo web: python app.py into your repositories terminal
+3. Make sure these files have been pushed to the GitHub repository and then navigate to [Heroku](https://www.heroku.com)
+4. Log in and select 'new' in the top right, name your app and choose a region that is closest to you. The app name must be unique.
+5. On the dashboard for your app, select the 'Deploy' tab and under deployment method, select GitHub (the easiest option if your repository is in GitHub)
+6. Enter the repository name underneath that and hit search. select the repository by clicking 'Connect'
+7. You can either select Automatic or Manual deployment depending on your method. This project has been deployed with the manual method. Remember that if you choose manual, then every time the main/master branch is changed, you will need to re-deploy the app.
+8. Next, go to the 'Settings' tab and select 'Reveal Config Vars'
+9. Here you need to add several KEY: VALUE pairs for the app to run. They are
+  - I.P: 0.0.0.0
+  - PORT: 5000
+  - MONGO_DBNAME: *database name*
+  - MONGO_URI: *MongoDB URI, taken from the connections section of the database*
+  - SECRET_KEY: *secret key of your choice*
+10. Once these KEY: VALUE pairs have been added, the app will be reachable from the [Heroku](https://www.heroku.com) portal
+
+### Forking the Repository
+If you would like to view/change the code for the project then you can copy this repository to your GitHub account by forking it. You will then be able to do this without affecting the original repository:
+1. From the repository home page,  click the 'fork' button (just below your picture with the dropdown menu)
+2. You should now have a copy of the repository on your account
+
+### Making a Local Clone
+1. From the repository home page, select the 'code' tab (next to the green 'Gitpod' button)
+2. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+3. Open Git Bash
+4. Change the current working directory to the location where you want the cloned directory to be made.
+5. Type 'git clone', and then paste the URL you copied in Step 2.
+6. Press Enter. Your local clone will be created.
+7. Alternatively, you can use 'Open with GitHub Desktop' and follow the instructions, or just download the ZIP file containing the code files
+
+Click [Here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository-to-github-desktop) to view the GitHub documentation on deployment, or [Here](https://devcenter.heroku.com/)for the Heroku documentation for further help and advice.
+
+Back to [Table of Contents](#table-of-contents)
 
 ## Credits
