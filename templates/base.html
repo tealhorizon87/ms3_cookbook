@@ -24,7 +24,7 @@
       <nav>
         <div class="nav-wrapper">
           <a href="{{ url_for('home') }}" class="my-logo">Cookbook</a>
-          <a href="#" data-target="mobile-menu" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+          <a href="#" data-target="mobile-menu" class="sidenav-trigger right"><i title="menu-button" class="fas fa-bars"></i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
