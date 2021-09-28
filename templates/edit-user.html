@@ -31,7 +31,7 @@
             <div class="row edit-buttons center-align">
               <button type="submit" name="button" class="btn edit-button">Edit</button>
               <a href="#userModal" class="btn cancel-button modal-trigger">Delete</a>
-              <a href="" class="btn cancel-button">Cancel</a>
+              <a href="{{ url_for('profile', username = session['user']) }}" class="btn cancel-button">Cancel</a>
             </div>
           </div>
         </form>
