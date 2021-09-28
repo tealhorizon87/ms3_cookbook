@@ -70,6 +70,7 @@ nav {
 }
 
 .page-footer h4,
+.page-footer h5,
 .page-footer a {
   color: var(--my-white);
 }
