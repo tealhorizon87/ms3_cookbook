@@ -11,7 +11,7 @@
   <div class="row my-card">
     <div class="card-panel col s10 m8 offset-s1 offset-m2">
       <h2 class="center-align">Edit Category</h2>
-      <form class="col s12 m10 offset-m1" action="" method="POST">
+      <form class="col s12 m10 offset-m1" action="{{ url_for('edit_category', category_id = category._id) }}" method="POST">
         <div class="row">
           <div class="input-field col s12">
             <input id="category" name="category" type="text" value="{{ category.category_name }}" minlength="3"
@@ -38,6 +38,7 @@
           <a href="{{ url_for('delete_category', category_id = category._id) }}" class="modal-close btn">Delete Category</a>
           <button class="modal-close btn cancel-button">Cancel</button>
         </div>
+      </div>
     </div>
   </section>
 {% endblock %}
