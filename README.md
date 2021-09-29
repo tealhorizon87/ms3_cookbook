@@ -102,6 +102,8 @@ Back to [Table of Contents](#table-of-contents)
     - Used as the source for the font databases used in this site
   - [Font Awesome 5.15.3](https://fontawesome.com/)
     - Used as the source for the icons used
+  - [Materialize](https://materializecss.com/)
+    - The main CSS library used to style the pages and make it responsive
   - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
     - A microframework used to provide the tools and libraries used to create the application
   - [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
