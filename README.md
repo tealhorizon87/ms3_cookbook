@@ -1,6 +1,6 @@
 # Cookbook
 
-Cookbook is an application designed to allow users to store their favourite food recipes and share them with other users. This project is the third milestone project as part of the Code Institute Diploma course. The deployed site can be viewed [here](#)
+Cookbook is an application designed to allow users to store their favourite food recipes and share them with other users. This project is the third milestone project as part of the Code Institute Diploma course. The deployed site can be viewed [here](http://tealhorizon-cookbook.herokuapp.com/)
 
 ![mockup](static/img/mock-up.png)
 
@@ -85,6 +85,7 @@ Below is a tabulated representation of the database schema that is used in this 
 - A comment box below the recipe to allow users to interact with the community and author
 
 ### Future Features
+- Give the user the chance to add an image to their recipe page
 - Add a 5-star (or similar) rating system to allow users to rate other user's recipes
 - Add a comments section to the bottom of the recipe card to allow users to provide relative feedback to the author of the recipe
 - Add a profile dropdown on the menu and include the ability to remove one's account and to contact the application's owner
@@ -177,7 +178,7 @@ Back to [Table of Contents](#table-of-contents)
 
 ### Content
   - All code was written by myself or taken from the materialize documentation (with one exception; see below), with inspiration taken from the Code Institute walkthrough projects
-  - The code to 'animate' the flash messages came from [Stack Overflow](https://stackoverflow.com/questions/21993661/css-auto-hide-elements-after-5-seconds/21994053#21994053) 
+  - The code to 'animate' the flash messages came from [Stack Overflow](https://stackoverflow.com/questions/21993661/css-auto-hide-elements-after-5-seconds/21994053#21994053)
 
 ### Acknowledgements
   - Thanks to my mentor for help, guidance and support during this project as always
