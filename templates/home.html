@@ -21,7 +21,11 @@
   </section>
 
   <section class="card-panel browse-panel">
-    <h2 class="center-align">Recently Added Recipes</h2>
+    {% if search == "success" %}
+      <h2 class="center-align">Search Results</h2>
+    {% else %}
+      <h2 class="center-align">Recently Added Recipes</h2>
+    {% endif %}
 
     <div class="row tile-grid">
       {% for recipe in recipes %}

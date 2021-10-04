@@ -206,8 +206,10 @@ def search():
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find(
         {"is_private": "off", "$text": {"$search": query}}))
+    search = "no results"
     if recipes:
-        return render_template("home.html", recipes=recipes)
+        search = "success"
+        return render_template("home.html", recipes=recipes, search=search)
     else:
         flash("No results found", "error")
         return redirect(url_for("home"))
