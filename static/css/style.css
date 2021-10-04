@@ -120,11 +120,24 @@ nav {
   width: 300px;
   height: 300px;
   margin: 1rem;
+}
+
+.admin-tile {
+  width: 300px;
+  height: 150px;
+  margin: 1rem;
+}
+
+.beige {
   background-color: var(--my-beige);
 }
 
 .my-card {
   margin-top: 4rem;
+}
+
+.card-title {
+  font-size: 2rem;
 }
 
 /* -------------------------------------------------home */

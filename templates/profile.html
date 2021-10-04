@@ -18,7 +18,7 @@
     <section class="card-panel">
       <h2 class="center-align">Manage Categories</h2>
       <a class="center-align modal-trigger" href="#addCategoryModal">
-        <div class="card-panel hoverable">
+        <div class="card-panel hoverable beige">
           <div class="card-content">
             <h5 class="card-title center-align">Add Category</h5>
           </div>
@@ -27,7 +27,7 @@
       <div class="row tile-grid">
         {% for category in categories %}
           <a href="{{ url_for('edit_category', category_id = category._id) }}">
-            <div class="card-panel hoverable tile">
+            <div class="card-panel hoverable admin-tile beige">
               <div class="card-content">
                 <h5 class="card-title center-align">{{ category.category_name }}</h5>
               </div>
@@ -42,7 +42,7 @@
       <div class="row tile-grid">
         {% for user in users %}
           <a href="{{ url_for('edit_user', user_id = user._id) }}">
-            <div class="card-panel hoverable tile">
+            <div class="card-panel hoverable admin-tile beige">
               <div class="card-content">
                 <h5 class="card-title center-align">{{ user.username }}</h5>
                 <p class="center-align">{{ user.email }}</p>
