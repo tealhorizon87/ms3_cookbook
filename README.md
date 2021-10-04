@@ -71,6 +71,11 @@ Below are the wireframes used to design the layout. They were created using [Bal
 
 Back to [Table of Contents](#table-of-contents)
 
+### Database
+Below is a tabulated representation of the database schema that is used in this application. The 'Categories' and 'Diet' collections are predominantly used to populate sections of the recipe input form.
+
+![database schema](static/img/database-schema.png)
+
 ## Features
 - A navbar - contiguous on all pages - that allows the user to access the areas of the application that they are authorised to access
 - A search bar on the home page to allow users to search for recipes by keyword, name, category, or ingredients
@@ -125,6 +130,12 @@ Back to [Table of Contents](#table-of-contents)
 
 ## Testing
 
+I have gathered all my testing data, and stored it in a separate file, which can be found [here](TESTING.md)
+
+### Known Bugs
+#### Input Validation
+  The system by which the line under the input field changes colour dependant on whether the input is valid or not does not currently work for the `select` elements. This is a known fault with materialize CSS.
+
 ## Deployment
 ### Heroku
 Deployment for this project is via [Heroku](https://www.heroku.com).
@@ -163,3 +174,15 @@ Click [Here](https://docs.github.com/en/github/creating-cloning-and-archiving-re
 Back to [Table of Contents](#table-of-contents)
 
 ## Credits
+
+### Content
+  - All code was written by myself or taken from the materialize documentation (with one exception; see below), with inspiration taken from the Code Institute walkthrough projects
+  - The code to 'animate' the flash messages came from [Stack Overflow](https://stackoverflow.com/questions/21993661/css-auto-hide-elements-after-5-seconds/21994053#21994053) 
+
+### Acknowledgements
+  - Thanks to my mentor for help, guidance and support during this project as always
+  - [CSS-Tricks](https://css-tricks.com/) - a useful place to find CSS methods
+  - [Stack Overflow](https://stackoverflow.com/) - much like w3schools, an essential source of guidance...there is always someone who has had the same problem, and the answer is likely here
+  - [Code Institute](https://codeinstitute.net/) - from inspiration through all the walkthrough projects to the tools needed to complete
+
+Back to [Table of Contents](#table-of-contents)
